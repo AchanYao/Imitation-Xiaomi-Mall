@@ -1,0 +1,28 @@
+spring:
+  datasource:
+    url: jdbc:mariadb://localhost:3306/xiaomi
+    driver-class-name: org.mariadb.jdbc.Driver
+    username: root
+    password: achanyao
+  jpa:
+    show-sql: true
+    database: mysql
+    hibernate:
+      ddl-auto: none
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MariaDBDialect
+  jackson:
+    serialization:
+      fail_on_empty_beans: false
+#    default-property-inclusion: non_null
+management:
+  endpoint:
+    info:
+      enabled: true
+    health:
+      show-details: always
+  endpoints:
+    web:
+      exposure:
+        include: "*"
