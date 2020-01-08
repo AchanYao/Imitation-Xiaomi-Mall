@@ -1,5 +1,41 @@
 # 仿小米商城
 
+## 环境安装
+
+[nodejs](https://nodejs.org/zh-cn/)
+
+[maven](https://maven.apache.org/install.html)
+
+[JDK11](https://www.oracle.com/technetwork/java/javase/downloads/jdk11-downloads-5066655.html)
+
+## 运行
+
+```bash
+mvn clean install -DskipTests
+
+cd admin
+
+mvn spring-boot:run
+
+cd ../web
+
+mvn spring-boot:run
+
+cd ../xiaomi-store-admin-vue
+
+npm install
+
+npm run serve
+
+cd ../xiaomi-store-vue
+
+npm install
+
+npm run serve
+```
+
+**注意**：运行前请更改数据库相关属性文件
+
 ## 实训日志
 
 ### 19/12/30 数据库设计
@@ -18,7 +54,8 @@
 地址 | address
 商品类型 | item_type
 
-实体之间的关联关系如下：  
+实体之间的关联关系如下：
+
 - `user` `user_detail` OneToOne
 - `user` `shopping_cart` OneToOne
 - `user` `order` OneToMany
@@ -38,6 +75,7 @@
 自顶向下分析，顶层模块有用户系统，管理员系统，向下有服务层，数据库读写dao层，Java实体model层，各层次依赖关系为，admin和web依赖service，service依赖dao，dao依赖model，它们都是xiaomi_store的子项目。
 
 项目依赖结构如下：
+
 ```bash
 [INFO] Scanning for projects...
 [INFO] ------------------------------------------------------------------------
@@ -602,7 +640,8 @@
 
 #### Java实体关系设计
 
-model层uml类图如下： 
+model层uml类图如下：
+
 ![model层uml类图](https://i.loli.net/2020/01/06/Ckmg7Uq6Zox2a8H.png)
 
 各实体间没有关系，但都继承自一个基类，基类存放实体创建时间，修改时间等信息。
